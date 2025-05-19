@@ -1,0 +1,7 @@
+numpy
+SimpleITK
+matplotlib
+scikit-image
+scikit-fuzzy
+scipy
+ipywidgets
