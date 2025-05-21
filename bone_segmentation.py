@@ -21,8 +21,8 @@ Remove noise
 Setting sigma value for denoising
 Setting saving directory
 """
-THRESHOLD=300 
-SMALL_OBJ_SIZE= 830
+THRESHOLD=290
+SMALL_OBJ_SIZE= 900
 GAUSSIAN_SIGMA= 1
 SAVE_DIR= "./output"
 
