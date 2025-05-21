@@ -42,7 +42,7 @@ def expand_mask_physically(input_mask_path, output_path=None, expansion_mm=2.0):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--masks", nargs='+', required=False, default=["femur_mask.nii.gz", "tibia_mask.nii.gz"], help="Paths to input masks")
+    parser.add_argument("--masks", nargs='+', required=False, default=["output/femur_mask.nii.gz", "output/tibia_mask.nii.gz"], help="Paths to input masks")
     parser.add_argument("--expansion", type=float, default=2.0, help="Expansion distance in mm eg:(2.0)")
     args = parser.parse_args()
 
