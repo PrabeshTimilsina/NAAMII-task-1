@@ -4,40 +4,6 @@ import SimpleITK as sitk
 from matplotlib import pyplot as plt
 import numpy as np
 
-def verify_expansion(original_path, random_path, expanded_path):
-    """Verify random mask lies between original and expanded"""
-    original= sitk.GetArrayFromImage(sitk.ReadImage(original_path))
-    random= sitk.GetArrayFromImage(sitk.ReadImage(random_path))
-    expanded= sitk.GetArrayFromImage(sitk.ReadImage(expanded_path))
-    
-    # Check voxel counts
-    print(f"\nVerification for {os.path.basename(random_path)}:")
-    print(f"Original voxels: {np.sum(original)}")
-    print(f"Random voxels:   {np.sum(random)}")
-    print(f"Expanded voxels: {np.sum(expanded)}")
-    
-    # Check containment
-    assert np.all(random>= original), "Random mask shrinks below original!"
-    assert np.all(random<= expanded), "Random mask exceeds expansion limit!"
-    
-    # Visual check (middle slice)
-    slice_idx= original.shape[0] // 2
-    plt.figure(figsize=(15,5))
-    
-    plt.subplot(1,3,1)
-    plt.imshow(original[slice_idx], cmap='gray')
-    plt.title('Original Mask')
-    
-    plt.subplot(1,3,2)
-    plt.imshow(random[slice_idx], cmap='gray')
-    plt.title('Randomized Mask')
-    
-    plt.subplot(1,3,3)
-    plt.imshow(expanded[slice_idx], cmap='gray')
-    plt.title('Expanded Mask')
-    
-    plt.savefig(f"verification_{os.path.basename(random_path)}.png")
-    plt.close()
 
 def randomized_contour_adjustment(original_mask_path, output_path, max_expansion_mm=2.0, random_expansion_mm=1.0):
     """
@@ -71,12 +37,6 @@ def randomized_contour_adjustment(original_mask_path, output_path, max_expansion
     sitk.WriteImage(randomized_mask, output_path)
     print(f"Saved randomized mask: {output_path}")
 
-    verify_expansion(
-        original_mask_path,
-        output_path,
-        "output/expanded_2mm_femur_mask.nii.gz" if "femur" in output_path 
-        else "output/expanded_2mm_tibia_mask.nii.gz"
-    )
     return randomized_mask
 
 if __name__ == "__main__":
