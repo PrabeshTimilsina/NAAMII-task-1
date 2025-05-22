@@ -25,14 +25,14 @@ def find_medial_lateral_lowest_points(mask_path):
     """
     # Load the mask image and ensuring that the value is binary for proper calculation
     # Also convert to 3d numpy array
-    mask_img = sitk.ReadImage(mask_path) 
-    mask_img = sitk.BinaryThreshold(mask_img, lowerThreshold=1, upperThreshold=255, insideValue=1, outsideValue=0)
-    mask_array = sitk.GetArrayFromImage(mask_img).astype(bool)
+    mask_img= sitk.ReadImage(mask_path) 
+    mask_img= sitk.BinaryThreshold(mask_img, lowerThreshold=1, upperThreshold=255, insideValue=1, outsideValue=0)
+    mask_array= sitk.GetArrayFromImage(mask_img).astype(bool)
 
     # Getting voxel indexes from metadata nd converting to millimeters
-    origin = np.array(mask_img.GetOrigin())         
-    spacing = np.array(mask_img.GetSpacing())      
-    direction = np.array(mask_img.GetDirection()).reshape(3, 3)
+    origin= np.array(mask_img.GetOrigin())         
+    spacing= np.array(mask_img.GetSpacing())      
+    direction= np.array(mask_img.GetDirection()).reshape(3, 3)
 
     #remove voxel from inside because we want landmark of lowest point on surface not inside
     eroded_img = sitk.BinaryErode(mask_img, [1, 1, 1])
@@ -65,7 +65,7 @@ def find_medial_lateral_lowest_points(mask_path):
         Return:
             Physical points for given voxel
         """
-        physical_point = origin + direction.dot(voxel_idx[::-1] * spacing) #Revercing because Numpy is z,y,x(in reversed order)
+        physical_point= origin + direction.dot(voxel_idx[::-1] * spacing) #Revercing because Numpy is z,y,x(in reversed order)
         return physical_point
 
     medial_phys = voxel_to_physical(medial_lowest_idx)
@@ -89,7 +89,7 @@ def main():
             print(f"File not found: {mask_file}")
             continue
 
-        medial, lateral = find_medial_lateral_lowest_points(mask_file)
+        medial, lateral= find_medial_lateral_lowest_points(mask_file)
         print(f"{os.path.basename(mask_file)}:")
         print(f" Medial lowest point (x,y,z): {medial}")
         print(f" Lateral lowest point (x,y,z): {lateral}\n")
@@ -101,7 +101,7 @@ def main():
         ])
 
     #Saving a CSV file for better readibility later
-    with open("output/tibia_landmarks.csv", mode="w", newline="") as file:
+    with open("output/tibia_landmarks.csv", mode= "w", newline= "") as file:
         writer = csv.writer(file)
         writer.writerow([
             "Mask File",
