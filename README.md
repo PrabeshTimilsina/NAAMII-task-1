@@ -35,7 +35,9 @@ git clone https://github.com/yourusername/femur-tibia-segmentation.git
 cd femur-tibia-segmentation
 ```
 ### 2. Install dependencies
+```bash
 pip install -r requirements.txt
+```
 
 ### 3. Run
 ```bash
