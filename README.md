@@ -38,15 +38,20 @@ cd femur-tibia-segmentation
 pip install -r requirements.txt
 
 ### 3. Run
+```bash
 python bone_segmentation.py --input path/to/ct_scan.nii.gz
+```
 The output mask will be saved in ./output folder
 
+```bash
 python expanded_mask.py --masks path/to/masks and --expansion value of expansion
-
+```
+```bash
 python random_expansion_contour.py --max_expansion max expansion value and --random_expansion random expansion value
-
+```
+```bash
 python landmark_detection.py
-
+```
 
 ## Use Cases
 Medical image preprocessing
