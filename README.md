@@ -43,12 +43,18 @@ python bone_segmentation.py --input path/to/ct_scan.nii.gz
 ```
 The output mask will be saved in ./output folder
 
+For specific expansion metrics like 2 mm, 4 mm
+
 ```bash
 python expanded_mask.py --masks path/to/masks and --expansion value of expansion
 ```
+
+For random expansion within original and 2mm expansion
 ```bash
 python random_expansion_contour.py --max_expansion max expansion value and --random_expansion random expansion value
 ```
+
+For landmard detetion, the output will be saved in csv file
 ```bash
 python landmark_detection.py
 ```
