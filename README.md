@@ -4,7 +4,7 @@ This Python project performs automatic segmentation of **femur** and **tibia** b
 
 ---
 
-## 🧠 Overview
+## Overview
 
 **What it does:**
 - Loads a CT scan
@@ -16,7 +16,7 @@ This Python project performs automatic segmentation of **femur** and **tibia** b
 
 ---
 
-## 🧰 Tools & Libraries
+## Tools & Libraries
 
 - **SimpleITK** – Medical image reading and writing
 - **NumPy** – Numerical array operations
