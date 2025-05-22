@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 
-def randomized_contour_adjustment(original_mask_path, output_path, max_expansion_mm=2.0, random_expansion_mm=1.0):
+def randomized_contour_adjustment(original_mask_path, output_path, max_expansion_mm=2.0, random_expansion_mm=1.5):
     """
     Generates a randomized mask lying between the original and max-expanded (e.g., 2mm) mask.
     The amount of random expansion is bounded and both values are parameters.
@@ -23,7 +23,7 @@ def randomized_contour_adjustment(original_mask_path, output_path, max_expansion
         insideValue=1, outsideValue=0
     )
 
-    threshold= np.random.uniform(0, random_expansion_mm)
+    threshold= np.random.uniform(1, random_expansion_mm)
 
     randomized_mask= sitk.BinaryThreshold(
         distance_map, lowerThreshold=-1e6, upperThreshold=threshold,
@@ -42,7 +42,7 @@ def randomized_contour_adjustment(original_mask_path, output_path, max_expansion
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--max_expansion", type=float, default=2.0, help="Maximum expansion distance in mm")
-    parser.add_argument("--random_expansion", type=float, default=1.0, help="Maximum random expansion value in mm")
+    parser.add_argument("--random_expansion", type=float, default=1.5, help="Maximum random expansion value in mm")
     args = parser.parse_args()
 
     masks= [
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     ]
 
     for mask_path in masks:
-        output_path = os.path.join("output", f"randomized_{os.path.basename(mask_path)}")
+        output_path = os.path.join("output", f"randomized_2_{os.path.basename(mask_path)}")
         randomized_contour_adjustment(
             original_mask_path= mask_path,
             output_path= output_path,

@@ -2,7 +2,9 @@ import argparse
 import SimpleITK as sitk
 import os
 
-def expand_mask_physically(input_mask_path, output_path=None, expansion_mm=2.0):
+import numpy as np
+
+def expand_mask_physically(input_mask_path, output_path=None, expansion_mm=4.0):
     """
     Expands a binary mask by a specified physical distance (in mm) using a distance map.
     """
@@ -32,6 +34,12 @@ def expand_mask_physically(input_mask_path, output_path=None, expansion_mm=2.0):
     expanded= expanded*255
     expanded.CopyInformation(mask)
 
+    original= sitk.GetArrayFromImage(sitk.ReadImage(input_mask_path))
+    expo = sitk.GetArrayFromImage(expanded)
+
+    print(f"Original voxels: {np.sum(original)}")
+    print(f"Expanded voxels: {np.sum(expo)}")
+
     if output_path:
         sitk.WriteImage(expanded, output_path)
         print(f"Expanded mask saved: {output_path}")
@@ -43,13 +51,13 @@ def expand_mask_physically(input_mask_path, output_path=None, expansion_mm=2.0):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--masks", nargs='+', required=False, default=["output/femur_mask.nii.gz", "output/tibia_mask.nii.gz"], help="Paths to input masks")
-    parser.add_argument("--expansion", type=float, default=2.0, help="Expansion distance in mm eg:(2.0)")
+    parser.add_argument("--expansion", type=float, default=4.0, help="Expansion distance in mm eg:(2.0)")
     args = parser.parse_args()
 
     masks = ["femur_mask.nii.gz", "tibia_mask.nii.gz"]
     for mask in masks:
         filename= os.path.basename(mask)
-        output_path= os.path.join("output", f"expanded_2mm_{filename}")
+        output_path= os.path.join("output", f"expanded_4mm_{filename}")
         expand_mask_physically(mask, output_path)
     
    
