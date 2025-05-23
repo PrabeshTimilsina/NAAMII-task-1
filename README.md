@@ -1,4 +1,4 @@
-﻿# Femur and Tibia Segmentation from CT Scans
+# Femur and Tibia Segmentation from CT Scans
 
 This Python project performs automatic segmentation of **femur** and **tibia** bones from 3D CT scans in `.nii.gz` format. It uses classical image processing techniques like thresholding, denoising, and morphological cleaning to identify and separate bone regions from medical scans.
 
@@ -73,5 +73,5 @@ Augmenting surgical planning tools
 ## Author
 Prabesh Timilsina
 Medical Image Processing | Computer Engineering Graduate
-📅 May 2025
+May 2025
 
