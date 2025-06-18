@@ -31,8 +31,8 @@ This Python project performs automatic segmentation of **femur** and **tibia** b
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/femur-tibia-segmentation.git
-cd femur-tibia-segmentation
+git clone https://github.com/PrabeshTimilsina/NAAMII-task-1
+cd NAAMII-task-1
 ```
 ### 2. Install dependencies
 ```bash
