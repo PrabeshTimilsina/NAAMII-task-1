@@ -1,4 +1,4 @@
-﻿# Femur and Tibia Segmentation from CT Scans
+# Femur and Tibia Segmentation from CT Scans
 
 This Python project performs automatic segmentation of **femur** and **tibia** bones from 3D CT scans in `.nii.gz` format. It uses classical image processing techniques like thresholding, denoising, and morphological cleaning to identify and separate bone regions from medical scans.
 
@@ -31,8 +31,8 @@ This Python project performs automatic segmentation of **femur** and **tibia** b
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/femur-tibia-segmentation.git
-cd femur-tibia-segmentation
+git clone https://github.com/PrabeshTimilsina/NAAMII-task-1
+cd NAAMII-task-1
 ```
 ### 2. Install dependencies
 ```bash
@@ -73,5 +73,5 @@ Augmenting surgical planning tools
 ## Author
 Prabesh Timilsina
 Medical Image Processing | Computer Engineering Graduate
-📅 May 2025
+May 2025
 
