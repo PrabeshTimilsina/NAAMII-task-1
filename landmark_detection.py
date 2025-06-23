@@ -51,8 +51,8 @@ def find_medial_lateral_lowest_points(mask_path):
     lateral_side = surface_indices[x_coords > median_x]
 
     #Find lowest point in each side medial and lateral
-    medial_lowest_idx = medial_side[np.argmin(medial_side[:, 0])]
-    lateral_lowest_idx = lateral_side[np.argmin(lateral_side[:, 0])]
+    medial_lowest_idx = medial_side[np.argmax(medial_side[:, 0])]
+    lateral_lowest_idx = lateral_side[np.argmax(lateral_side[:, 0])]
 
     #converting to mm
     def voxel_to_physical(voxel_idx):
